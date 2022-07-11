@@ -1,4 +1,5 @@
 import java.io.BufferedWriter;
+import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -31,8 +32,13 @@ public class BankLogin {
 			System.out.print("User ID: "); //asking User-id
 			bkd.setUserId(userInputScan.nextLine());
 			
-			System.out.print("Password: "); //asking Password
-			bkd.setUserPass(userInputScan.nextLine());
+			try {
+				userInput = passwordInput();
+				bkd.setUserPass(userInput);
+			} catch (Exception e) {
+				System.out.print("Password: "); //asking Password
+				bkd.setUserPass(userInputScan.nextLine());
+			}
 			
 			bkd.checkLogin(); //VALIDATE entered USER-ID and PASSWORD
 			matchLogin = bkd.getCheckLogin();
@@ -65,7 +71,8 @@ public class BankLogin {
 			while (correctRole == false) {
 				System.out.print("\n1) Admin"
 						+ "\n2) Customer"
-						+ "\nChoose one (1 or 2): ");
+						+ "\n3) Logout"
+						+ "\nChoose one (1 or 2, & 3 for logout): ");
 				userInput = userInputScan.nextLine();
 				
 				if (userInput.equals("1")) {
@@ -75,6 +82,9 @@ public class BankLogin {
 					correctRole = true;
 
 					new BankMenuCust(userRole, userAccNo, userId, userPass, userName, userDob, userAddr, userMom, userJob, userSalaryRange, userBalance, userStatus);
+				} else if (userInput.equals("3")) {
+					System.out.println("\nThank you for using this app! Have a nice day ;)");
+					System.exit(0);
 				} else {
 					System.out.println("\nWrong input '" + userInput + "'!");
 					System.out.println("Please enter correct formatted input choice (1 or 2)");
@@ -84,6 +94,19 @@ public class BankLogin {
 		} else if (bkd.getUserRole().equals("cust")) {
 			new BankMenuCust(userRole, userAccNo, userId, userPass, userName, userDob, userAddr, userMom, userJob, userSalaryRange, userBalance, userStatus);
 		}
+	}
+	
+	private String passwordInput() {
+		Console konsol = System.console();
+		
+		if (konsol == null) {
+			System.out.println("PASSWORD will be SHOWN! (Can NOT DETECT console/terminal)");
+			System.out.println("-- Try to run in OS windows --");
+		}
+		
+		char[] passArray = konsol.readPassword("Password: ");
+				
+		return new String(passArray);
 	}
 
 	/*

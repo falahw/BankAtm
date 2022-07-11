@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class BankKuDat {
 
-	private String kuDatLoc = "C://Users/Lenovo/eclipse-workspace/BankAtm/dbBankUser.txt";
+	private String kuDatLoc = "dbbank\\dbBankUser.txt";
 	private File kuDatFile = new File(kuDatLoc);
 	private File kuDatdel;
 	private String readLines, desName, newBalance;
@@ -199,13 +199,13 @@ public class BankKuDat {
 		bw.close();
 		
 		split = newBankUser.toString().split(";");
-		try (BufferedWriter bw2 = new BufferedWriter(new FileWriter("C://Users/Lenovo/eclipse-workspace/BankAtm/userlog_intertrans_" + split[1] + "-" + split[2] + ".txt"))) {
+		try (BufferedWriter bw2 = new BufferedWriter(new FileWriter("dbbank\\dbbank_userlog\\userlog_intertrans_" + split[1] + "-" + split[2] + ".txt"))) {
 			bw2.write(timeStamp + ";" + split[1] + ";" + split[4] + ";" + split[10] + ";cr;transfer credit;initial balance;immediate;" + sequenceHeadGen + "00000;success");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		try (BufferedWriter bw2 = new BufferedWriter(new FileWriter("C://Users/Lenovo/eclipse-workspace/BankAtm/userlog_domestic_" + split[1] + "-" + split[2] + ".txt"))) {
+		try (BufferedWriter bw2 = new BufferedWriter(new FileWriter("dbbank\\dbbank_userlog\\userlog_domestic_" + split[1] + "-" + split[2] + ".txt"))) {
 			return;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -317,14 +317,14 @@ public class BankKuDat {
 			if (kuDatTemp.get(i).equals(bankUser)) {
 				//System.out.println(kuDatTemp.get(i));
 				kuDatTemp.remove(i);
-				kuDatdel = new File("C://Users/LENOVO/eclipse-workspace/BankAtm/userlog_domestic_" + userAccNo + "-" + userId + ".txt");
+				kuDatdel = new File("dbbank\\dbbank_userlog\\userlog_domestic_" + userAccNo + "-" + userId + ".txt");
 				if (kuDatdel.delete()) {
 					System.out.println("Successfully delete 'userlog_domestic_" + userAccNo + "-" + userId + ".txt'");
 				} else {
 					System.err.println("Fail delete 'userlog_domestic_" + userAccNo + "-" + userId + ".txt");
 				}
 				
-				kuDatdel = new File("C://Users/LENOVO/eclipse-workspace/BankAtm/userlog_intertrans_" + userAccNo + "-" + userId + ".txt");
+				kuDatdel = new File("dbbank\\dbbank_userlog\\userlog_intertrans_" + userAccNo + "-" + userId + ".txt");
 				if (kuDatdel.delete()) {
 					System.out.println("Successfully delete 'userlog_intertrans_" + userAccNo + "-" + userId + ".txt'");
 				} else {
@@ -374,7 +374,7 @@ public class BankKuDat {
 		}
 
 		System.out.println("userId: " + userId + "; userName: " + userName + "; desName: " + desName + "; userAccNo: " + userAccNo);
-		transLoc = "C://Users/Lenovo/eclipse-workspace/BankAtm/userlog_intertrans_" + userAccNo + "-" + userId + ".txt";
+		transLoc = "dbbank\\dbbank_userlog\\userlog_intertrans_" + userAccNo + "-" + userId + ".txt";
 
 		try (BufferedReader br = new BufferedReader(new FileReader(transLoc))) {
 			while ((readLines = br.readLine()) != null) {
@@ -397,7 +397,7 @@ public class BankKuDat {
 			}
 		}
 		
-		dbLogLoc = "C://Users/Lenovo/eclipse-workspace/BankAtm/userlog_intertrans_" + desAccNo + "-" + desUserId + ".txt";
+		dbLogLoc = "dbbank\\dbbank_userlog\\userlog_intertrans_" + desAccNo + "-" + desUserId + ".txt";
 		dbFileLog = new File(dbLogLoc);
 		fileLogScanner = new Scanner(dbFileLog);
 		while (fileLogScanner.hasNext()) {
@@ -409,7 +409,7 @@ public class BankKuDat {
 		sequenceId++;
 		//System.exit(1); --> USED for TESTING
 		
-		bw = new BufferedWriter(new FileWriter("C://Users/Lenovo/eclipse-workspace/BankAtm/userlog_intertrans_" + desAccNo + "-" + desUserId + ".txt", true));
+		bw = new BufferedWriter(new FileWriter("dbbank\\dbbank_userlog\\userlog_intertrans_" + desAccNo + "-" + desUserId + ".txt", true));
 		bw.append("\n" + timeStamp + ";" + userAccNo + ";" + userName + ";" + amount + ";cr;transfer credit;" + remark + ";immediate;" + sequenceId + ";success");
 		bw.close();
 
@@ -470,7 +470,7 @@ public class BankKuDat {
 	
 	//SERVING BankMenuCust.java in menuCust4()
 	public void userTrxRecord(String userId, String userAccNo) throws FileNotFoundException {
-		kuDatFile = new File("C://Users/LENOVO/eclipse-workspace/BankAtm/userlog_intertrans_" + userAccNo + "-" + userId + ".txt");
+		kuDatFile = new File("dbbank\\dbbank_userlog\\userlog_intertrans_" + userAccNo + "-" + userId + ".txt");
 		LinkedList<String> userTrxLog = new LinkedList<String>();
 		Scanner userLogscan = new Scanner(kuDatFile);
 		

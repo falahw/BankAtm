@@ -20,11 +20,11 @@ public class BankMenuAdmin {
 	Scanner inputScan = new Scanner(System.in);
 	private String input;
 	private String adminChoice;
-	private String dbUserLoc = "C://Users/Lenovo/eclipse-workspace/BankAtm/dbBankUser.txt";
-	File dbUserFile = new File(dbUserLoc);
-	Scanner dbUserScan = new Scanner(dbUserFile);
-	private String barisFile;
-	LinkedList<String> dbUserTemp = new LinkedList<String>();
+	//private String dbUserLoc = "C://Users/Lenovo/eclipse-workspace/BankAtm/dbBankUser.txt";
+	//File dbUserFile = new File(dbUserLoc);
+	//Scanner dbUserScan = new Scanner(dbUserFile);
+	//private String barisFile;
+	//LinkedList<String> dbUserTemp = new LinkedList<String>();
 	Scanner dataInputScan = new Scanner(System.in);
 	private String userRole, userId, userPass, userName, userDob, userAddr, userMom, userJob, userRangeSlr, userStatus;
 	private String userAccNum;
@@ -92,12 +92,12 @@ public class BankMenuAdmin {
 		StringBuilder userData = new StringBuilder("");
 
 		System.out.println("\nCREATE NEW USER\n===============");
-		
+		/*
 		while (dbUserScan.hasNext()) {
 			barisFile = dbUserScan.nextLine();
 			dbUserTemp.add(barisFile);
 		}
-		
+		*/
 		//input ROLE
 		System.out.print("Role (admin/cust): ");
 		userRole = dataInputScan.nextLine();
@@ -832,12 +832,13 @@ public class BankMenuAdmin {
 		this.userAccNum = userAccNum;
 
 		String[] dbUserTempLineFragment = null;
+		/*
 		dbUserScan = new Scanner(dbUserFile);
 		
 		while (dbUserScan.hasNext()) {
 			dbUserTemp.add(dbUserScan.nextLine());
 		}
-
+*/
 		boolean flagUserMatch = false;
 		boolean editUserCheck = false;
 		boolean menuEditAvail = false;
@@ -1019,12 +1020,13 @@ public class BankMenuAdmin {
 		this.userAccNum = userAccNum;
 
 		String[] dbUserTempLineFragment = null;
+		/*
 		dbUserScan = new Scanner(dbUserFile);
 		
 		while (dbUserScan.hasNext()) {
 			dbUserTemp.add(dbUserScan.nextLine());
 		}
-
+*/
 		boolean flagUserMatch = false;
 		boolean deleteUserCheck = false;
 		int catchIndex = 0;

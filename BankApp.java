@@ -96,7 +96,7 @@ class BankMenu { /*
 	*/
 	
 	public void showKumpulanDataUser() throws FileNotFoundException {//READING Bank's File
-		String bankDbEg = "C://Users/Lenovo/eclipse-workspace/BankAtm/dbBankUser.txt";
+		String bankDbEg = "dbbank\\dbBankUser.txt";
 		File bankDbEgFile = new File(bankDbEg);
 		Scanner scan = new Scanner(bankDbEgFile);
 		String[] tokens;
