@@ -18,7 +18,7 @@ A simple bank application (with roles of admin & user)
 - calling join operation like in sql is still possible eventhough it has to be manually coded in java
 - LinkedList() is used as a medium to CRUD data
 - LinkedList() is chosen because of its efficiency in random access memory/data index compared to ArrayList()
-- you may find user password unmasked if you use linux/mac os
+- when you run app SimpleBank.jar, you may find user password unmasked if you use linux/mac os
 
 ## Note/WARNING!
 >> if you want to edit database file, make sure to leave a space of empty row after editing the file
