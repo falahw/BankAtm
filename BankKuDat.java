@@ -214,6 +214,7 @@ public class BankKuDat {
 
 	//SERVING BankMenuAdmin.java in validateAccNo() in menuAdmin2()
 	public void setLastAccNo(int firstDigitAccNo) {
+		//LOOP until LAST ACC-NO found
 		for (String string : kuDatTemp) {
 			split = string.split(";");
 			

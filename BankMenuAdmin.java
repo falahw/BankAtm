@@ -50,7 +50,7 @@ public class BankMenuAdmin {
 				+ "\n3) Edit user data"
 				+ "\n4) Delete user data"
 				+ "\n5) Logout");
-		System.out.print("\nChoose one (in numeric): ");
+		System.out.print("\nChoose 1-5 (in numeric): ");
 		
 		Scanner adminChoiceScan = new Scanner(System.in);
 		adminChoice = adminChoiceScan.nextLine();
@@ -212,10 +212,7 @@ public class BankMenuAdmin {
 		System.exit(0);
 	}
 	
-	private void validateUserRole(String userRole) {
-		// TODO Auto-generated method stub
-		
-		while (!userRole.equals("admin") && !userRole.equals("cust")) {
+	private void validateUserRole(String userRole) {while (!userRole.equals("admin") && !userRole.equals("cust")) {
 			System.out.println("Role input: " + userRole);
 			System.out.print("Try again! Role must be filled with 'admin' or 'cust'\n\nRole (admin/cust): ");
 			userRole = dataInputScan.nextLine();
@@ -500,8 +497,6 @@ public class BankMenuAdmin {
 	}
 	
 	private void validateDob(String userDob) {
-		// TODO Auto-generated method stub
-		
 		flagEmpty = true;
 		boolean flagDobDd = false;
 		boolean flagDobMm = false;
@@ -648,8 +643,6 @@ public class BankMenuAdmin {
 	}
 	
 	private void validateAddr(String userAddr) {
-		// TODO Auto-generated method stub
-		
 		flagEmpty = true;
 		while (flagEmpty == true) {
 			flagEmpty = true;
@@ -674,8 +667,6 @@ public class BankMenuAdmin {
 	}
 	
 	private void validateRangeSalary(String userRangeSlr) {
-		// TODO Auto-generated method stub
-		
 		flagEmpty = true;
 		boolean flagRangeSlr = false;
 		while (flagRangeSlr == false || flagEmpty == true) {
@@ -772,8 +763,6 @@ public class BankMenuAdmin {
 	}
 	
 	private void validateStatus(int userAccBalance) {
-		// TODO Auto-generated method stub
-		
 		if (userAccBalance <= 7000000 ) {
 			userStatus = "silver";
 		} else if (userAccBalance > 7000000 && userAccBalance <= 25000000) {
@@ -790,7 +779,7 @@ public class BankMenuAdmin {
 	}
 	
 	public int getAccNo() {
-		// TODO Auto-generated method stub
+
 		return this.userAccNo;
 	}
 	
@@ -827,7 +816,6 @@ public class BankMenuAdmin {
 	}
 	
 	private void editUser(String userId, String userAccNum) throws FileNotFoundException {
-		// TODO Auto-generated method stub
 		this.userId = userId;
 		this.userAccNum = userAccNum;
 
@@ -874,9 +862,10 @@ public class BankMenuAdmin {
 							"\n9) Occupation: " + bkd.getUserJob() +
 							"\n10) Range salary: " + bkd.getUserSalaryRange() +
 							"\n11) Balance: Rp. " + bkd.getUserBalance() +
-							"\n12) Member status: " + bkd.getUserStatus() + " *---UNEDITABLE---");
+							"\n12) Member status: " + bkd.getUserStatus() + " *---UNEDITABLE---" +
+							"\n13) Back to main menu");
 					
-					System.out.print("\nInput number menu of data you want to alter (1-12): ");
+					System.out.print("\nInput number menu of data you want to alter (1-12, 13 to main menu): ");
 					String menuInput3Edit = inputScan.nextLine();
 					
 					if (menuInput3Edit.equals("1")) {
@@ -986,6 +975,13 @@ public class BankMenuAdmin {
 						bkd.setUserStatus(getUserStatus()); //dbUserTempLineFragment[11] = getUserStatus();
 						menuEditAvail = true;
 					}
+					else if (menuInput3Edit.equals("13")) {
+						try {
+							new BankMenuAdmin(userName);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
 					else if (menuInput3Edit.equals("2") || menuInput3Edit.equals("3") || menuInput3Edit.equals("12")) {
 						menuEditAvail = false;
 						System.out.print("This choice menu '" + menuInput3Edit + "' is uneditable!\nChoose another edit choice menu: ");
@@ -1015,7 +1011,7 @@ public class BankMenuAdmin {
 	}
 	
 	private void deleteUser(String userId, String userAccNum) throws FileNotFoundException {
-		System.out.println("\nInside deleteUser()");
+		//System.out.println("\nInside deleteUser()");
 		this.userId = userId;
 		this.userAccNum = userAccNum;
 

@@ -1,9 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class BankMenuCust {
@@ -36,7 +31,7 @@ public class BankMenuCust {
 					+ "\n3) Transfer"
 					+ "\n4) Check transaction record"
 					+ "\n5) Logout");
-			System.out.print("\nChoose one from 1-4 (in numeric): ");
+			System.out.print("\nChoose one from 1-5 (in numeric): ");
 			
 			custChoice = inputScan.nextLine();
 			System.out.println("Menu " + custChoice + " is chosen\n");
@@ -92,8 +87,9 @@ public class BankMenuCust {
 		while (inputChoice == false) {
 			System.out.println("Transfer type:"
 					+ "\n1) Same Bank"
-					+ "\n2) Domestic");
-			System.out.print("Choose one (1 or 2): ");
+					+ "\n2) Domestic"
+					+ "\n3) Main menu");
+			System.out.print("Choose one (1-3): ");
 			custChoice = inputScan.nextLine();
 			
 			if (custChoice.equals("1")) {
@@ -102,6 +98,8 @@ public class BankMenuCust {
 			} else if (custChoice.equals("2")) {
 				inputChoice = true;
 				transferDomestic();
+			} else if (custChoice.equals("3")) {
+				new BankMenuCust(userRole, userAccNo, userId, userPass, userName, userDob, userAddr, userMom, userJob, userSalaryRange, userBalance, userStatus);
 			} else {
 				inputChoice = false;
 				System.out.println("\nWrong input: '" + custChoice + "'");
