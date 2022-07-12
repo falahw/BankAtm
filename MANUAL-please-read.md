@@ -20,6 +20,13 @@ A simple bank application (with roles of admin & user)
 - LinkedList() is chosen because of its efficiency in random access memory/data index compared to ArrayList()
 - when you run app SimpleBank.jar, you may find user password unmasked if you use linux/mac os
 
+## App Files
+- BankApp.java --> work like a home page in a website. It shows some users login and their pass to be tested and direct users to BankLogin.java
+- BankLogin.java --> checking validity of users login. If they are valid, users will be redirected to page-menu that fits their role
+- BankMenuAdmin.java --> serve all admin features that can be used by users with role of admin
+- BankMenuCustomer.java --> serve all customer features that be used by users with role of customer
+- BankKuDat.java --> all database requests are processed here. Any page that want to access database with their features has to make object of BankKuDat and use its available methods to request database they need.
+
 ## Note/WARNING!
 >> if you want to edit database file, make sure to leave a space of empty row after editing the file
 - if you miss the step above, new data will be created next to the last data line, causing app SimpleBank having difficulty in reading the database you edit after
